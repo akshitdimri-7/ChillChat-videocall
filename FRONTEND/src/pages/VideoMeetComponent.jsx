@@ -19,7 +19,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-const server_url = "http://localhost:8080";
+const server_url = `${server}`;
 
 var connections = {};
 
