@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import server from "../environment.js";
+
 import io from "socket.io-client";
 
 import styles from "../styles/VideoMeetComponent.module.css";
@@ -19,7 +21,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-const server_url = `${server}`;
+const server_url = server;
 
 var connections = {};
 
