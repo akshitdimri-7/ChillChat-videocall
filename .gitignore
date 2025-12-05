@@ -1,2 +1,3 @@
 FRONTEND/node_modules
+FRONTEND/.gitignore
 BACKEND/node_modules
