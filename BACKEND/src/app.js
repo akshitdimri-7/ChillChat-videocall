@@ -8,6 +8,10 @@ import cors from "cors";
 
 import userRoutes from "./routes/users.routes.js";
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
 // Create an Express application (handles routes, middleware, APIs)
 const app = express();
 
@@ -19,7 +23,7 @@ const server = createServer(app);
 // This enables real-time communication (chat, notifications, etc.)
 const io = connectToSocket(server);
 
-app.set("port", process.env.PORT || 8080);
+app.set("port", process.env.PORT);
 app.use(cors());
 app.use(express.json({ limit: "40kb" }));
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
@@ -28,9 +32,7 @@ app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
   app.set("monogo_user");
-  const connectionDb = await mongoose.connect(
-    "mongodb+srv://allmimi0909_db_user:G10SSWsZUGs7Kf3r@cluster0.ymnyxxc.mongodb.net/?appName=Cluster0"
-  );
+  const connectionDb = await mongoose.connect(process.env.MONGO_URL);
   console.log(
     `MongoDB connected successfully on: ${connectionDb.connection.host}`
   );
